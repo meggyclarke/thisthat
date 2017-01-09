@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109035005) do
+ActiveRecord::Schema.define(version: 20170109143844) do
 
   create_table "questions", force: :cascade do |t|
     t.string   "question"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 20170109035005) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "this_id"
+    t.integer  "that_id"
+    t.integer  "this_vote"
+    t.integer  "that_vote"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_votes_on_question_id"
+    t.index ["that_id"], name: "index_votes_on_that_id"
+    t.index ["this_id"], name: "index_votes_on_this_id"
   end
 
 end
