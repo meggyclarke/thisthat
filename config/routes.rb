@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :questions do
       resources :this
+      resources :that
 
   end
 
